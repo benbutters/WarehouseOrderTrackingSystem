@@ -121,6 +121,7 @@ public class DatabaseConnectionManager
 
 				//start new object of order class to contain the read information
 				OrderLine orderline = new OrderLine(OrderID, ProductID, Quantity);
+				
 
 				orderlines.add(orderline);										//add each order object to the arraylist
 
@@ -128,6 +129,7 @@ public class DatabaseConnectionManager
 			rs.close();
 		}
 
+		
 
 		catch (SQLException sqle)
 		{	sqle.printStackTrace();	} 
@@ -312,7 +314,7 @@ public class DatabaseConnectionManager
 		try {
 			Class.forName( "com.mysql.jdbc.Driver");	
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
+			
 			stmt = conn.createStatement();
 			String sql3 = "UPDATE customerorders " + "SET CheckedOut = '"+CheckedOut+"' WHERE OrderID = '"+OrderID+"' ";
 			stmt.executeUpdate(sql3);
@@ -556,4 +558,35 @@ public class DatabaseConnectionManager
 			}
 		}
 	}
+
+	public static void createnewstockorderline(int OrderID, int ProductID, int Quantity)		//method for creating a new stock order
+	{
+		Connection conn = null;
+		Statement stmt = null;
+		try {
+			Class.forName( "com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+			stmt = conn.createStatement();								//insert statement with sql syntax to put the relevant new values in the new order
+			String sql = "INSERT INTO stockorderline "+"VALUES('"+OrderID+"', '"+String.valueOf(ProductID)+"', '"+String.valueOf(Quantity)+"')";
+			stmt.executeUpdate(sql);
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException se) { }
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+	}
+
 }
