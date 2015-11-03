@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -38,7 +39,7 @@ public class GUImainmenu extends JFrame
 	private void prepareGUI() 
 	{
 		 mainFrame = new JFrame("Warehouse Order Tracking System");
-		 mainFrame.setSize(750, 750);
+		 mainFrame.setSize(2000,2000);
 		 mainFrame.setLayout(new GridLayout(4, 1));
 		 headerLabel = new JLabel("", JLabel.CENTER);
 		 Label1 = new JLabel("", JLabel.CENTER);

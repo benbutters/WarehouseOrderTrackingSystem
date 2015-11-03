@@ -43,6 +43,8 @@ public class GUIcreatenewstockordermenu extends JFrame
 	 private JList products4;
 	 private JTextField OrderID;
 	 private Date date;
+	 private JLabel instruction;
+	 private JPanel instructionPanel;
 	 
 	 
 
@@ -60,12 +62,20 @@ public class GUIcreatenewstockordermenu extends JFrame
 	private void prepareGUI() 
 	{
 		 mainFrame = new JFrame("Warehouse Order Tracking System");
-		 mainFrame.setSize(750, 750);
-		 mainFrame.setLayout(new GridLayout(8, 1));
+		 mainFrame.setSize(2000,2000);
+		 mainFrame.setLayout(new GridLayout(9, 1));
 		 headerLabel = new JLabel("", JLabel.CENTER);
+		 
+		String instructions = "Please select a new order ID number, you will not be able to use a ID number aready in use. Select all the products and quantity that you want, click Create Order Lines and Create New Order to update the order database.";
+			 
+		instruction = new JLabel("",JLabel.CENTER);
+		instruction.setSize(350, 100);
+		instruction.setText(instructions);
 		 
 		 
 		 mainFrame.addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent windowEvent){System.exit(0);}});
+		 instructionPanel = new JPanel();
+		 instructionPanel.setLayout(new GridLayout());
 		 controlPanel1 = new JPanel();
 		 controlPanel1.setLayout(new GridLayout());
 		 controlPanel2 = new JPanel();
@@ -79,6 +89,7 @@ public class GUIcreatenewstockordermenu extends JFrame
 		 controlPanel6 = new JPanel();
 		 controlPanel6.setLayout(new GridLayout());
 		 mainFrame.add(headerLabel);
+		 mainFrame.add(instructionPanel);
 		 mainFrame.add(controlPanel1);
 		 mainFrame.add(controlPanel2);
 		 mainFrame.add(controlPanel3);
@@ -129,10 +140,11 @@ public class GUIcreatenewstockordermenu extends JFrame
 
 		createorderButton.addActionListener(new BCL());
 				
+		instructionPanel.add(instruction);
 		controlPanel1.add(OrderID);
 		controlPanel2.add(products1);
 		controlPanel2.add(quantity1);
-		controlPanel2.add(createorderlineButton1);
+		controlPanel1.add(createorderlineButton1);
 		controlPanel3.add(products2);
 		controlPanel3.add(quantity2);
 		controlPanel4.add(products3);

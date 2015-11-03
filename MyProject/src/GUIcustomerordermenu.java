@@ -63,7 +63,7 @@ public class GUIcustomerordermenu extends JFrame
 		
 						
 		mainFrame = new JFrame("Warehouse Order Tracking System");
-		mainFrame.setSize(1000, 750);
+		mainFrame.setSize(2000,2000);
 		mainFrame.setLayout(new GridLayout(5, 1));
 		headerLabel = new JLabel("", JLabel.CENTER);
 		orderlist = new JList(listData);
@@ -114,29 +114,25 @@ public class GUIcustomerordermenu extends JFrame
 		
 		JButton mainButton = new JButton("Main Menu");
 		JButton stockorderButton = new JButton("Stock Orders");
-		JButton checkoutbutton = new JButton("Check Out");
-		JButton checkinbutton = new JButton("Check In");
-		JButton apply = new JButton("Apply");
+		JButton checkoutButton = new JButton("Check Out");
+		JButton checkinButton = new JButton("Check In");
 		
 		mainButton.setActionCommand("Main Menu");
 		stockorderButton.setActionCommand("Stock Orders");
-		checkoutbutton.setActionCommand("Check Out");
-		checkinbutton.setActionCommand("Check In");
-		apply.setActionCommand("Apply");
+		checkoutButton.setActionCommand("Check Out");
+		checkinButton.setActionCommand("Check In");
 		
 		mainButton.addActionListener(new BCL());
 		stockorderButton.addActionListener(new BCL());
-		checkoutbutton.addActionListener(new BCL());
-		checkinbutton.addActionListener(new BCL());
-		apply.addActionListener(new BCL());
-		
+		checkoutButton.addActionListener(new BCL());
+		checkinButton.addActionListener(new BCL());
+				
 		orderPanel.add(scrollpane);
 		orderPanel.add(employee);
-		orderPanel.add(checkoutbutton);
-		orderPanel.add(checkinbutton);
+		orderPanel.add(checkoutButton);
 		BPanel.add(textarea);
 		BPanel.add(statusoptions);
-		BPanel.add(apply);
+		BPanel.add(checkinButton);
 		controlPanel.add(mainButton);
 		controlPanel.add(stockorderButton);
 		
@@ -220,10 +216,6 @@ public class GUIcustomerordermenu extends JFrame
 		   case "Check In":
 			   DatabaseConnectionManager.updateemployee("N/A", (orderlist.getSelectedIndex()+1));
 			   DatabaseConnectionManager.updatecheckedout(0, (orderlist.getSelectedIndex()+1));
-			   mainFrame.setVisible(false);
-			   GUIcustomerordermenu.main(null);
-			   break;
-		   case "Apply":
 			   DatabaseConnectionManager.updatestatus(String.valueOf(statusoptions.getSelectedValue()),(orderlist.getSelectedIndex()+1));
 			   mainFrame.setVisible(false);
 			   GUIcustomerordermenu.main(null);

@@ -41,7 +41,7 @@ public class Order
 	// define default object
 	public Order()
 	{
-		OrderID = "";
+		OrderID = 0;
 		Status = "";
 		Employee = "";
 		Price = 0;

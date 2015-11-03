@@ -35,6 +35,8 @@ public class GUIstockordermenu extends JFrame
 	 private String nextline = "\n";
 	 private JScrollPane scrollpane;
 	 private JList statusoptions;
+	 private JLabel instruction;
+	 private JPanel instructionPanel;
 
 	public GUIstockordermenu()
 	{
@@ -61,15 +63,23 @@ public class GUIstockordermenu extends JFrame
 		
 						
 		mainFrame = new JFrame("Warehouse Order Tracking System");
-		mainFrame.setSize(1000, 750);
-		mainFrame.setLayout(new GridLayout(4, 1));
+		mainFrame.setSize(2000,2000);
+		mainFrame.setLayout(new GridLayout(5, 1));
 		headerLabel = new JLabel("", JLabel.CENTER);
 		orderlist = new JList(listData);
+
+		String instructions = "Please select an order to view the details. To update the status of a order please select the new status and select apply. To create a new order, click the create new order button.";
+		 
+		instruction = new JLabel("",JLabel.CENTER);
+		instruction.setSize(350, 100);
+		instruction.setText(instructions);
 		
 		String[] options = {"Placed","AwaitingDelivery","Processing","Shelved"};
 		statusoptions = new JList(options);
 		 
 		mainFrame.addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent windowEvent){System.exit(0);}});
+		instructionPanel = new JPanel();
+		instructionPanel.setLayout(new GridLayout());
 		orderPanel = new JPanel();
 		orderPanel.setLayout(new GridLayout());
 		BPanel = new JPanel();
@@ -77,6 +87,7 @@ public class GUIstockordermenu extends JFrame
 		controlPanel = new JPanel();
 		controlPanel.setLayout(new GridLayout(1, 2));
 		mainFrame.add(headerLabel);
+		mainFrame.add(instructionPanel);
 		mainFrame.add(orderPanel);
 		mainFrame.add(BPanel);
 		mainFrame.add(controlPanel);
@@ -115,6 +126,7 @@ public class GUIstockordermenu extends JFrame
 		apply.addActionListener(new BCL());
 		newstockorderbutton.addActionListener(new BCL());
 		
+		instructionPanel.add(instruction);
 		orderPanel.add(scrollpane);
 		orderPanel.add(textarea);
 		BPanel.add(statusoptions);
