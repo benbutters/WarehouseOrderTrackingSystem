@@ -499,6 +499,65 @@ public class DatabaseConnectionManager
 		return stockorderlines;
 	}
 
+	public static int accessDBgetstock(int productid)
+	{
+		int stocklevel = 0;
+		Connection conn = null;
+		Statement stmt = null;
+		try 
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			conn =
+					DriverManager.getConnection(DB_URL, USER, PASS);
+		}
+		catch (ClassNotFoundException | SQLException e)
+		{
+			e.printStackTrace();
+		}
+
+		try
+		{
+			stmt = conn.createStatement();								//define what columns to import from the SQL database, in the same order as the order class
+			String sql2 = "SELECT ProductID, StockLevel FROM product";
+			ResultSet rs = stmt.executeQuery(sql2);
+
+			while (rs.next()) 
+			{
+				int ProductID = rs.getInt("ProductID");
+				
+				if (productid == ProductID)
+				{
+					stocklevel = rs.getInt("StockLevel");		//read in all the columns to an int or string
+				}
+
+			}
+			rs.close();
+		}
+
+
+		catch (SQLException sqle)
+		{	sqle.printStackTrace();	} 
+		catch (Exception e)
+		{	e.printStackTrace();	} 
+		finally 
+		{	try
+		{	if (stmt != null)
+			stmt.close();
+		}
+		catch (SQLException se)
+		{ }
+		try 
+		{	if (conn != null)
+			conn.close();
+		}
+		catch (SQLException se)
+		{	se.printStackTrace();
+		}
+		}
+		//System.out.println("Goodbye!");
+		return stocklevel;
+	}
+		
 	public static void updatestockstatus(String status, int OrderID)		//method for updating a stock order's status
 	{
 		Connection conn = null;
@@ -558,7 +617,6 @@ public class DatabaseConnectionManager
 			}
 		}
 	}
-
 	
 	public static void createnewstockorder(int OrderID, String Status, String Supplier, int Price, String DatePlaced)		//method for creating a new stock order
 	{

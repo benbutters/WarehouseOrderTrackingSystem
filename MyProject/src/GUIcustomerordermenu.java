@@ -214,6 +214,10 @@ public class GUIcustomerordermenu extends JFrame
 			   GUIcustomerordermenu.main(null);
 			   break;
 		   case "Check In":
+			   if((String.valueOf(statusoptions.getSelectedValue()).equals("Picked"))
+					   {
+				   
+					   }
 			   DatabaseConnectionManager.updateemployee("N/A", (orderlist.getSelectedIndex()+1));
 			   DatabaseConnectionManager.updatecheckedout(0, (orderlist.getSelectedIndex()+1));
 			   DatabaseConnectionManager.updatestatus(String.valueOf(statusoptions.getSelectedValue()),(orderlist.getSelectedIndex()+1));
