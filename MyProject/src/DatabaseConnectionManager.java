@@ -588,7 +588,7 @@ public class DatabaseConnectionManager
 		}
 	}
 
-	public static void updatestocklevel(int StockLevel, String ProductID)		//method for updating a stock order's status
+	public static void updatestocklevel(int StockLevel, int ProductID)		//method for updating a stock order's status
 	{
 		Connection conn = null;
 		Statement stmt = null;

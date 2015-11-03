@@ -230,12 +230,27 @@ public class GUIcustomerordermenu extends JFrame
 			   GUIcustomerordermenu.main(null);
 			   break;
 		   case "Check In":
-			   DatabaseConnectionManager.updateemployee("N/A", (orderlist.getSelectedIndex()+1));
-			   DatabaseConnectionManager.updatecheckedout(0, (orderlist.getSelectedIndex()+1));
-			   DatabaseConnectionManager.updatestatus(String.valueOf(statusoptions.getSelectedValue()),(orderlist.getSelectedIndex()+1));
-			   mainFrame.setVisible(false);
-			   GUIcustomerordermenu.main(null);
-			   break;
+			   if(statusoptions.getSelectedValue().equals("Picked"))
+			   {
+				   ArrayList<OrderLine> orderlines = new ArrayList<OrderLine>();
+				   orderlines = DatabaseConnectionManager.accessDBOrderLine();	
+				   int lengthorderlines = orderlines.size();
+				   for(int i=0; i<lengthorderlines; i++)
+				   {
+					   if(orderlines.get(i).getOrderID() == (orderlist.getSelectedIndex()+1))
+					   {
+						   int stocklevel = DatabaseConnectionManager.accessDBgetstock(orderlines.get(i).getProductID());
+						   int productid = orderlines.get(i).getProductID();
+						   DatabaseConnectionManager.updatestocklevel(stocklevel - orderlines.get(i).getQuantity(), orderlines.get(i).getProductID());
+					   }
+				   }
+			   }
+			   	DatabaseConnectionManager.updateemployee("N/A", (orderlist.getSelectedIndex()+1));
+			   	DatabaseConnectionManager.updatecheckedout(0, (orderlist.getSelectedIndex()+1));
+			   	DatabaseConnectionManager.updatestatus(String.valueOf(statusoptions.getSelectedValue()),(orderlist.getSelectedIndex()+1));
+			   	mainFrame.setVisible(false);
+			   	GUIcustomerordermenu.main(null);
+			   	break;
 		  }
 		 }
 	}

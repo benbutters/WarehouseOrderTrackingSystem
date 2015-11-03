@@ -203,7 +203,7 @@ public class GUIcreatenewstockordermenu extends JFrame
 							productid = 1;
 							DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
 							stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-							DatabaseConnectionManager.updatestocklevel((stocklevel+productid), String.valueOf(productid));
+							DatabaseConnectionManager.updatestocklevel((stocklevel+productid), productid);
 							break;
 						case 2:
 							Supplier = ("2- Bieber Supplier");
@@ -211,7 +211,7 @@ public class GUIcreatenewstockordermenu extends JFrame
 							productid = 2;
 							DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
 							stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-							DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity1.getText()), String.valueOf(productid));
+							DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity1.getText()), productid);
 							break;
 						case 3:
 							Supplier = ("3- Colm Supplier");
@@ -219,7 +219,7 @@ public class GUIcreatenewstockordermenu extends JFrame
 							productid = 3;
 							DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
 							stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-							DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity1.getText()), String.valueOf(productid));
+							DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity1.getText()), productid);
 							break;
 						case 4:
 		  					Supplier = ("3- Colm Supplier");
@@ -227,7 +227,7 @@ public class GUIcreatenewstockordermenu extends JFrame
 							productid = 4;
 							DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
 							stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-							DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity1.getText()), String.valueOf(productid));
+							DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity1.getText()), productid);
 							break;
   		   				}
   		   				
@@ -242,7 +242,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 1;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity2.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), productid);
   		   					break;
   		   				case 2:
   		   					Supplier = ("2- Bieber Supplier");
@@ -250,7 +250,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 2;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity2.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), productid);
   		   					break;
   		   				case 3:
   		   					Supplier = ("3- Colm Supplier");
@@ -258,7 +258,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 3;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity2.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), productid);
   		   					break;
   		   				case 4:
   		   					Supplier = ("3- Colm Supplier");
@@ -266,7 +266,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 4;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity2.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), productid);
   		   					break;
   		   				}
   		   				
@@ -281,7 +281,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 1;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity3.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), productid);
   		   					break;
   		   				case 2:
   		   					Supplier = ("2- Bieber Supplier");
@@ -289,7 +289,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 2;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity3.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), productid);
   		   					break;
   		   				case 3:
   		   					Supplier = ("3- Colm Supplier");
@@ -297,7 +297,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 3;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity3.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), productid);
   		   					break;
   		   				case 4:
   		   					Supplier = ("3- Colm Supplier");
@@ -305,7 +305,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 4;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity3.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), productid);
   		   					break;
   		   				}
   		   				
@@ -320,7 +320,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 1;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity4.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), productid);
   		   					break;
   		   				case 2:
   		   					Supplier = ("2- Bieber Supplier");
@@ -328,7 +328,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 2;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity4.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), productid);
   		   					break;
   		   				case 3:
   		   					Supplier = ("3- Colm Supplier");
@@ -336,7 +336,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 3;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity4.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), productid);
   		   					break;
   		   				case 4:
   		   					Supplier = ("3- Colm Supplier");
@@ -344,7 +344,7 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   					productid = 4;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity4.getText()));
   		   					stocklevel = DatabaseConnectionManager.accessDBgetstock(productid);
-  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), String.valueOf(productid));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), productid);
   		   					break;
   		   				}	
 				   
