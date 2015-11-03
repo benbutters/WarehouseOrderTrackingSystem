@@ -180,6 +180,22 @@ public class GUIcustomerordermenu extends JFrame
 										details[j+1] = (nextline + orderlines.get(j).getQuantity()+" of Colm Pissed Edition gnomes"+nextline);
 										textarea.append(details[j+1]);
 										break;
+									case "5":
+										details[j+1] = (nextline + orderlines.get(j).getQuantity()+" of Harry Styles Porousware gnomes"+nextline);
+										textarea.append(details[j+1]);
+										break;
+									case "6":
+										details[j+1] = (nextline + orderlines.get(j).getQuantity()+" of Justin Bieber Porousware gnomes"+nextline);
+										textarea.append(details[j+1]);
+										break;
+									case "7":
+										details[j+1] = (nextline + orderlines.get(j).getQuantity()+" of Colm Pool Porousware gnomes"+nextline);
+										textarea.append(details[j+1]);
+										break;
+									case "8":
+										details[j+1] = (nextline + orderlines.get(j).getQuantity()+" of Colm Pissed Porousware gnomes"+nextline);
+										textarea.append(details[j+1]);
+										break;
 									}
 								}
 							}
@@ -214,10 +230,6 @@ public class GUIcustomerordermenu extends JFrame
 			   GUIcustomerordermenu.main(null);
 			   break;
 		   case "Check In":
-			   if((String.valueOf(statusoptions.getSelectedValue()).equals("Picked"))
-					   {
-				   
-					   }
 			   DatabaseConnectionManager.updateemployee("N/A", (orderlist.getSelectedIndex()+1));
 			   DatabaseConnectionManager.updatecheckedout(0, (orderlist.getSelectedIndex()+1));
 			   DatabaseConnectionManager.updatestatus(String.valueOf(statusoptions.getSelectedValue()),(orderlist.getSelectedIndex()+1));
