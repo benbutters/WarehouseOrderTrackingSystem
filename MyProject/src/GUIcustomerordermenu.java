@@ -74,7 +74,7 @@ public class GUIcustomerordermenu extends JFrame
 		String[] employees = {"Ben","Frank","Jim","John","Sergio","Steve"};
 		employee = new JList(employees);
 		
-		String instructions = "Please select an order to view the details."+nextline+"To check out an order select your name and click Check Out."+nextline+"To check in an order select the new status of the order and click Check In";
+		String instructions = "Please select an order to view the details. To check out an order select your name and click Check Out. To check in an order select the new status of the order and click Check In";
 		 
 		instruction = new JLabel("",JLabel.CENTER);
 		instruction.setSize(350, 100);
