@@ -126,25 +126,20 @@ public class GUIcreatenewstockordermenu extends JFrame
 		headerLabel.setText("Create New Order");
 		JButton mainButton = new JButton("Main Menu");
 		JButton stockorderButton = new JButton("Stock Orders");
-		JButton createorderlineButton1 = new JButton("Create Order Lines");
 		JButton createorderButton = new JButton("Create New Order");
 		
 		mainButton.setActionCommand("Main Menu");
 		stockorderButton.setActionCommand("Stock Orders");
-		createorderlineButton1.setActionCommand("Create Order Lines");
 		createorderButton.setActionCommand("Create New Order");
 		
 		mainButton.addActionListener(new BCL());
 		stockorderButton.addActionListener(new BCL());
-		createorderlineButton1.addActionListener(new BCL());
-
 		createorderButton.addActionListener(new BCL());
 				
 		instructionPanel.add(instruction);
 		controlPanel1.add(OrderID);
 		controlPanel2.add(products1);
 		controlPanel2.add(quantity1);
-		controlPanel1.add(createorderlineButton1);
 		controlPanel3.add(products2);
 		controlPanel3.add(quantity2);
 		controlPanel4.add(products3);
@@ -184,7 +179,7 @@ public class GUIcreatenewstockordermenu extends JFrame
 				mainFrame.setVisible(false);
 				GUIstockordermenu.main(null);
 				break;
-			case "Create Order Lines":			   			   
+			case "Create New Order":			   			   
   		   		for(int i=0; i<lengthstockorders; i++)								//loop over existing stock order IDs to check new one is not already used
   		   		{
   		   			if (Integer.parseInt(OrderID.getText()) == stockorders.get(i).getOrderID())
@@ -193,250 +188,302 @@ public class GUIcreatenewstockordermenu extends JFrame
   		   			}
   		   			else
   		   			{
+  		   				String Supplier = new String();
+  		   				int Price = 0;
+  		   				String[] product = {"Harry Styles","Justin Bieber","Colm Pool","Colm Pissed"};
   		   				switch(products1.getSelectedIndex())
   		   				{
   		   				case 0:
+  		   					Supplier = Supplier;
 							break;
 						case 1:
+		  					Supplier = ("1- 1D Supplier");
+		  					Price = Price + (Integer.parseInt(quantity1.getText())* 25);
 							productid = 1;
 							DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+							DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity1.getText()), String.valueOf(productid));
 							break;
 						case 2:
+							Supplier = ("2- Bieber Supplier");
+		  					Price = Price + (Integer.parseInt(quantity1.getText())* 40);
 							productid = 2;
 							DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+							DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity1.getText()), String.valueOf(productid));
 							break;
 						case 3:
+							Supplier = ("3- Colm Supplier");
+		  					Price = Price + (Integer.parseInt(quantity1.getText())* 5);
 							productid = 3;
 							DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+							DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity1.getText()), String.valueOf(productid));
 							break;
 						case 4:
+		  					Supplier = ("3- Colm Supplier");
+		  					Price = Price + (Integer.parseInt(quantity1.getText())* 60);
 							productid = 4;
 							DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+							DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity1.getText()), String.valueOf(productid));
 							break;
   		   				}
   		   				
   		   				switch(products2.getSelectedIndex())
   		   				{
   		   				case 0:
+  		   					Supplier = Supplier;
   		   					break;
   		   				case 1:
+  		   					Supplier = ("1- 1D Supplier");
+  		   					Price = Price + (Integer.parseInt(quantity1.getText())* 25);
   		   					productid = 1;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), String.valueOf(productid));
   		   					break;
   		   				case 2:
+  		   					Supplier = ("2- Bieber Supplier");
+  		   					Price = Price + (Integer.parseInt(quantity1.getText())* 40);
   		   					productid = 2;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), String.valueOf(productid));
   		   					break;
   		   				case 3:
+  		   					Supplier = ("3- Colm Supplier");
+  		   					Price = Price + (Integer.parseInt(quantity1.getText())* 5);
   		   					productid = 3;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), String.valueOf(productid));
   		   					break;
   		   				case 4:
+  		   					Supplier = ("3- Colm Supplier");
+  	  					   	Price = Price + (Integer.parseInt(quantity1.getText())* 60);
   		   					productid = 4;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity2.getText()), String.valueOf(productid));
   		   					break;
   		   				}
   		   				
   		   				switch(products3.getSelectedIndex())
   		   				{
   		   				case 0:
+  		   					Supplier = Supplier;
   		   					break;
   		   				case 1:	
+  		   					Supplier = ("1- 1D Supplier");
+  	  					   	Price = Price + (Integer.parseInt(quantity1.getText())* 25);
   		   					productid = 1;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), String.valueOf(productid));
   		   					break;
   		   				case 2:
+  		   					Supplier = ("2- Bieber Supplier");
+  		   					Price = Price + (Integer.parseInt(quantity1.getText())* 40);
   		   					productid = 2;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), String.valueOf(productid));
   		   					break;
   		   				case 3:
+  		   					Supplier = ("3- Colm Supplier");
+  		   					Price = Price + (Integer.parseInt(quantity1.getText())* 5);
   		   					productid = 3;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), String.valueOf(productid));
   		   					break;
   		   				case 4:
+  		   					Supplier = ("3- Colm Supplier");
+  		   					Price = Price + (Integer.parseInt(quantity1.getText())* 60);
   		   					productid = 4;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity3.getText()), String.valueOf(productid));
   		   					break;
   		   				}
   		   				
   		   				switch(products4.getSelectedIndex())
   		   				{
   		   				case 0:
+  		   					Supplier = Supplier;
   		   					break;
   		   				case 1:
+  		   					Supplier = ("1- 1D Supplier");
+  		   					Price = Price + (Integer.parseInt(quantity1.getText())* 25);
   		   					productid = 1;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), String.valueOf(productid));
   		   					break;
   		   				case 2:
+  		   					Supplier = ("2- Bieber Supplier");
+  		   					Price = Price + (Integer.parseInt(quantity1.getText())* 40);
   		   					productid = 2;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), String.valueOf(productid));
   		   					break;
   		   				case 3:
+  		   					Supplier = ("3- Colm Supplier");
+  	  					   	Price = Price + (Integer.parseInt(quantity1.getText())* 5);
   		   					productid = 3;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), String.valueOf(productid));
   		   					break;
   		   				case 4:
+  		   					Supplier = ("3- Colm Supplier");
+  		   					Price = Price + (Integer.parseInt(quantity1.getText())* 60);
   		   					productid = 4;
   		   					DatabaseConnectionManager.createnewstockorderline(Integer.parseInt(OrderID.getText()), productid, Integer.parseInt(quantity1.getText()));
+  		   					DatabaseConnectionManager.updatestocklevel(Integer.parseInt(quantity4.getText()), String.valueOf(productid));
   		   					break;
-  		   				}					
-  		   			}
+  		   				}	
+				   
+  				  	   
+  				   switch (products1.getSelectedIndex())
+  				   {
+  				   case 0:
+  					   Supplier = Supplier;
+  					   break;
+  				   case 1:
+  					   Supplier = ("1- 1D Supplier");
+  					   Price = Price + (Integer.parseInt(quantity1.getText())* 25);
+  					   break;
+  				   case 2:
+  					   Supplier = ("2- Bieber Supplier");
+  					   Price = Price + (Integer.parseInt(quantity1.getText())* 40);
+  					   break;
+  				   case 3:
+  					   Supplier = ("3- Colm Supplier");
+  					   Price = Price + (Integer.parseInt(quantity1.getText())* 5);
+  					   break;
+  				   case 4:
+  					   Supplier = ("3- Colm Supplier");
+  					   Price = Price + (Integer.parseInt(quantity1.getText())* 60);
+  					   break;
+  				   default:
+  					   break;
+  				   }
+  				   			  
+  				   switch (products2.getSelectedIndex())
+  				   {
+  				   case 0:
+  					   Supplier = Supplier;
+  					   break;
+  				   case 1:
+  					   Supplier = (Supplier+" & 1- 1D Supplier");
+  					   Price = Price + (Integer.parseInt(quantity2.getText())* 25);
+  					   break;
+  				   case 2:
+  					   Supplier = (Supplier+" & 2- Bieber Supplier");
+  					   Price = Price + (Integer.parseInt(quantity2.getText())* 40);
+  					   break;
+  				   case 3:
+  					   Supplier = (Supplier+" & 3- Colm Supplier");
+  					   Price = Price + (Integer.parseInt(quantity2.getText())* 5);
+  					   break;
+  				   case 4:
+  					   Supplier = (Supplier+" & 3- Colm Supplier");
+  					   Price = Price + (Integer.parseInt(quantity2.getText())* 60);
+  					   break;
+  				   default:
+  					   break;
+  				   }
+  				   			   
+  				   switch (products3.getSelectedIndex())
+  				   {
+  				   case 0:
+  					   Supplier = Supplier;
+  					   break;
+  				   case 1:
+  					   Supplier = (Supplier+" & 1- 1D Supplier");
+  					   Price = Price + (Integer.parseInt(quantity3.getText())* 25);
+  					   break;
+  				   case 2:
+  					   Supplier = (Supplier+" & 2- Bieber Supplier");
+  					   Price = Price + (Integer.parseInt(quantity3.getText())* 40);
+  					   break;
+  				   case 3:
+  					   Supplier = (Supplier+" & 3- Colm Supplier");
+  					   Price = Price + (Integer.parseInt(quantity3.getText())* 5);
+  					   break;
+  				   case 4:
+  					   Supplier = (Supplier+" & 3- Colm Supplier");
+  					   Price = Price + (Integer.parseInt(quantity3.getText())* 60);
+  					   break;
+  				   default:
+  					   break;
+  				   }
+  				   
+  				   switch (products4.getSelectedIndex())
+  				   {
+  				   case 0:
+  					   Supplier = Supplier;
+  					   break;
+  				   case 1:
+  					   Supplier = (Supplier+" & 1- 1D Supplier");
+  					   Price = Price + (Integer.parseInt(quantity4.getText())* 25);
+  					   break;
+  				   case 2:
+  					   Supplier = (Supplier+" & 2- Bieber Supplier");
+  					   Price = Price + (Integer.parseInt(quantity4.getText())* 40);
+  					   break;
+  				   case 3:
+  					   Supplier = (Supplier+" & 3- Colm Supplier");
+  					   Price = Price + (Integer.parseInt(quantity4.getText())* 5);
+  					   break;
+  				   case 4:
+  					   Supplier = (Supplier+" & 3- Colm Supplier");
+  					   Price = Price + (Integer.parseInt(quantity4.getText())* 60);
+  					   break;
+  				   default:
+  					   break;
+  				   }
+  				   
+  				   String Dates = (String.valueOf(date));
+  				   String[] DatesPlaced = Dates.split(" ");
+  				   String month = null;
+  				   			   
+  				   switch(DatesPlaced[1])
+  				   {
+  				   case "Jan":
+  					   month = "01";
+  					   break;
+  				   case "Feb":
+  					   month = "02";
+  					   break;
+  				   case "Mar":
+  					   month = "03";
+  					   break;
+  				   case "Apr":
+  					   month = "04";
+  					   break;
+  				   case "May":
+  					   month = "05";
+  					   break;
+  				   case "Jun":
+  					   month = "06";
+  					   break;
+  				   case "Jul":
+  					   month = "07";
+  				   case "Aug":
+  					   month = "08";
+  					   break;
+  				   case "Sep":
+  					   month = "09";
+  					   break;
+  				   case "Oct":
+  					   month = "10";
+  					   break;
+  				   case "Nov":
+  					   month = "11";
+  					   break;
+  				   case "Dec":
+  					   month = "12";
+  					   break;
+  				   }
+  				   String dateplaced = (DatesPlaced[5]+"-"+month+"-"+DatesPlaced[2]);
+  		   
+  				   DatabaseConnectionManager.createnewstockorder(Integer.parseInt(OrderID.getText()), "Placed", Supplier, Price, dateplaced);
+  				   mainFrame.setVisible(false);
+  				   GUIcreatenewstockordermenu.main(null);
+  				   break;
+  				}
+  		   		
+  		   		
   		   		}
-  		   		break;
-			case "Create New Order":
-			   String Supplier = new String();
-			   int Price = 0;
-			   String[] product = {"Harry Styles","Justin Bieber","Colm Pool","Colm Pissed"};
-			   
-			  	   
-			   switch (products1.getSelectedIndex())
-			   {
-			   case 0:
-				   Supplier = Supplier;
-				   break;
-			   case 1:
-				   Supplier = ("1- 1D Supplier");
-				   Price = Price + (Integer.parseInt(quantity1.getText())* 25);
-				   break;
-			   case 2:
-				   Supplier = ("2- Bieber Supplier");
-				   Price = Price + (Integer.parseInt(quantity1.getText())* 40);
-				   break;
-			   case 3:
-				   Supplier = ("3- Colm Supplier");
-				   Price = Price + (Integer.parseInt(quantity1.getText())* 5);
-				   break;
-			   case 4:
-				   Supplier = ("3- Colm Supplier");
-				   Price = Price + (Integer.parseInt(quantity1.getText())* 60);
-				   break;
-			   default:
-				   break;
-			   }
-			   			  
-			   switch (products2.getSelectedIndex())
-			   {
-			   case 0:
-				   Supplier = Supplier;
-				   break;
-			   case 1:
-				   Supplier = (Supplier+" & 1- 1D Supplier");
-				   Price = Price + (Integer.parseInt(quantity2.getText())* 25);
-				   break;
-			   case 2:
-				   Supplier = (Supplier+" & 2- Bieber Supplier");
-				   Price = Price + (Integer.parseInt(quantity2.getText())* 40);
-				   break;
-			   case 3:
-				   Supplier = (Supplier+" & 3- Colm Supplier");
-				   Price = Price + (Integer.parseInt(quantity2.getText())* 5);
-				   break;
-			   case 4:
-				   Supplier = (Supplier+" & 3- Colm Supplier");
-				   Price = Price + (Integer.parseInt(quantity2.getText())* 60);
-				   break;
-			   default:
-				   break;
-			   }
-			   			   
-			   switch (products3.getSelectedIndex())
-			   {
-			   case 0:
-				   Supplier = Supplier;
-				   break;
-			   case 1:
-				   Supplier = (Supplier+" & 1- 1D Supplier");
-				   Price = Price + (Integer.parseInt(quantity3.getText())* 25);
-				   break;
-			   case 2:
-				   Supplier = (Supplier+" & 2- Bieber Supplier");
-				   Price = Price + (Integer.parseInt(quantity3.getText())* 40);
-				   break;
-			   case 3:
-				   Supplier = (Supplier+" & 3- Colm Supplier");
-				   Price = Price + (Integer.parseInt(quantity3.getText())* 5);
-				   break;
-			   case 4:
-				   Supplier = (Supplier+" & 3- Colm Supplier");
-				   Price = Price + (Integer.parseInt(quantity3.getText())* 60);
-				   break;
-			   default:
-				   break;
-			   }
-			   
-			   switch (products4.getSelectedIndex())
-			   {
-			   case 0:
-				   Supplier = Supplier;
-				   break;
-			   case 1:
-				   Supplier = (Supplier+" & 1- 1D Supplier");
-				   Price = Price + (Integer.parseInt(quantity4.getText())* 25);
-				   break;
-			   case 2:
-				   Supplier = (Supplier+" & 2- Bieber Supplier");
-				   Price = Price + (Integer.parseInt(quantity4.getText())* 40);
-				   break;
-			   case 3:
-				   Supplier = (Supplier+" & 3- Colm Supplier");
-				   Price = Price + (Integer.parseInt(quantity4.getText())* 5);
-				   break;
-			   case 4:
-				   Supplier = (Supplier+" & 3- Colm Supplier");
-				   Price = Price + (Integer.parseInt(quantity4.getText())* 60);
-				   break;
-			   default:
-				   break;
-			   }
-			   
-			   String Dates = (String.valueOf(date));
-			   String[] DatesPlaced = Dates.split(" ");
-			   String month = null;
-			   			   
-			   switch(DatesPlaced[1])
-			   {
-			   case "Jan":
-				   month = "01";
-				   break;
-			   case "Feb":
-				   month = "02";
-				   break;
-			   case "Mar":
-				   month = "03";
-				   break;
-			   case "Apr":
-				   month = "04";
-				   break;
-			   case "May":
-				   month = "05";
-				   break;
-			   case "Jun":
-				   month = "06";
-				   break;
-			   case "Jul":
-				   month = "07";
-			   case "Aug":
-				   month = "08";
-				   break;
-			   case "Sep":
-				   month = "09";
-				   break;
-			   case "Oct":
-				   month = "10";
-				   break;
-			   case "Nov":
-				   month = "11";
-				   break;
-			   case "Dec":
-				   month = "12";
-				   break;
-			   }
-			   String dateplaced = (DatesPlaced[5]+"-"+month+"-"+DatesPlaced[2]);
-	   
-			   DatabaseConnectionManager.createnewstockorder(Integer.parseInt(OrderID.getText()), "Placed", Supplier, Price, dateplaced);
-			   mainFrame.setVisible(false);
-			   GUIcreatenewstockordermenu.main(null);
-			   break;
 			}
 		 }
 	}

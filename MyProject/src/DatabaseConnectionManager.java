@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DatabaseConnectionManager 
 {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://localhost/john";
+	static final String DB_URL = "jdbc:mysql://10.50.15.9:3306/john";
 	static final String USER = "root";
 	static final String PASS = "netbuilder";
 
@@ -529,6 +529,37 @@ public class DatabaseConnectionManager
 		}
 	}
 
+	public static void updatestocklevel(int StockLevel, String ProductID)		//method for updating a stock order's status
+	{
+		Connection conn = null;
+		Statement stmt = null;
+		try {
+			Class.forName( "com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+			stmt = conn.createStatement();
+			String sql3 = "UPDATE products " + "SET StockLevel = '"+StockLevel+"' WHERE ProductID = '"+ProductID+"' ";
+			stmt.executeUpdate(sql3);
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException se) { }
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+	}
+
+	
 	public static void createnewstockorder(int OrderID, String Status, String Supplier, int Price, String DatePlaced)		//method for creating a new stock order
 	{
 		Connection conn = null;
