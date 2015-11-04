@@ -28,15 +28,17 @@ public class GUIcustomerordermenu extends JFrame
 	 private JLabel headerLabel;
 	 private JPanel controlPanel;
 	 private JPanel orderPanel;
+	 private JPanel TopPanel;
 	 private JList orderlist;
 	 private JPanel BPanel;
 	 private JTextArea textarea;
+	 private JTextArea productinfo;
 	 private String[] details;
 	 private String nextline = "\n";
 	 private JScrollPane scrollpane;
 	 private JList statusoptions;
 	 private JList employee;
-	 private JLabel instruction;
+	 private JTextArea instruction;
 
 	public GUIcustomerordermenu()
 	{
@@ -70,17 +72,21 @@ public class GUIcustomerordermenu extends JFrame
 		
 		String[] options = {"Placed","Picked","Packed","AwaitingCourier","Delivery","Completed"};
 		statusoptions = new JList(options);
+		statusoptions.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
 		String[] employees = {"Ben","Frank","Jim","John","Sergio","Steve"};
 		employee = new JList(employees);
+		employee.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
-		String instructions = "Please select an order to view the details. To check out an order select your name and click Check Out. To check in an order select the new status of the order and click Check In";
+		String instructions = ("Please select an order to view the details."+"\n"+"To check out an order select your name and click Check Out."+"\n"+"To check in an order select the new status of the order and click Check In");
 		 
-		instruction = new JLabel("",JLabel.CENTER);
-		instruction.setSize(350, 100);
-		instruction.setText(instructions);
+		instruction = new JTextArea(20, 60);
+		instruction.append(instructions);
+		instruction.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
 		mainFrame.addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent windowEvent){System.exit(0);}});
+		TopPanel = new JPanel();
+		TopPanel.setLayout(new GridLayout());
 		orderPanel = new JPanel();
 		orderPanel.setLayout(new GridLayout());
 		BPanel = new JPanel();
@@ -88,7 +94,7 @@ public class GUIcustomerordermenu extends JFrame
 		controlPanel = new JPanel();
 		controlPanel.setLayout(new GridLayout(1, 2));
 		mainFrame.add(headerLabel);
-		mainFrame.add(instruction);
+		mainFrame.add(TopPanel);
 		mainFrame.add(orderPanel);
 		mainFrame.add(BPanel);
 		mainFrame.add(controlPanel);
@@ -100,9 +106,25 @@ public class GUIcustomerordermenu extends JFrame
 	{
 		
 		scrollpane = new JScrollPane(orderlist);
+		orderlist.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
 		textarea = new JTextArea(20, 60);
-			
+		textarea.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		
+		productinfo = new JTextArea(20, 60);
+		productinfo.setEditable(false);
+		productinfo.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		
+		ArrayList<Product> products = new ArrayList<Product>();
+		products = DatabaseConnectionManager.accessDBProduct();
+		int lengthproducts = products.size();
+		
+		for(int i=0; i<lengthproducts; i++)
+		{
+			String product = ("ProductID: "+products.get(i).getProductID()+" "+products.get(i).getProductName()+"\t"+" Location in warehouse: "+products.get(i).getLocationInWarehouse()+"\t"+" Stock level: "+products.get(i).getStockLevel()+"\n");
+			productinfo.append(product);
+		}
+		
 		ArrayList<OrderLine> orderlines = new ArrayList<OrderLine>();
 		orderlines = DatabaseConnectionManager.accessDBOrderLine();
 		int lengthorderlines = orderlines.size();
@@ -122,11 +144,18 @@ public class GUIcustomerordermenu extends JFrame
 		checkoutButton.setActionCommand("Check Out");
 		checkinButton.setActionCommand("Check In");
 		
+		mainButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		stockorderButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		checkoutButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		checkinButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		
 		mainButton.addActionListener(new BCL());
 		stockorderButton.addActionListener(new BCL());
 		checkoutButton.addActionListener(new BCL());
 		checkinButton.addActionListener(new BCL());
 				
+		TopPanel.add(instruction);
+		TopPanel.add(productinfo);
 		orderPanel.add(scrollpane);
 		orderPanel.add(employee);
 		orderPanel.add(checkoutButton);

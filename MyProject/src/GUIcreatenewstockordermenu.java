@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
@@ -44,7 +45,8 @@ public class GUIcreatenewstockordermenu extends JFrame
 	 private Date date;
 	 private JLabel instruction;
 	 private JPanel instructionPanel;
-	 
+	 private JTextArea productinfo;
+	 private JScrollPane scrollpane;
 	 
 
 	public GUIcreatenewstockordermenu()
@@ -70,6 +72,7 @@ public class GUIcreatenewstockordermenu extends JFrame
 		instruction = new JLabel("",JLabel.CENTER);
 		instruction.setSize(350, 100);
 		instruction.setText(instructions);
+		instruction.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		 
 		 
 		 mainFrame.addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent windowEvent){System.exit(0);}});
@@ -101,19 +104,40 @@ public class GUIcreatenewstockordermenu extends JFrame
 	private void showEvent() 
 	{
 		
+		productinfo = new JTextArea(20, 60);
+		productinfo.setEditable(false);
+		productinfo.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		
+		ArrayList<Product> products = new ArrayList<Product>();
+		products = DatabaseConnectionManager.accessDBProduct();
+		int lengthproducts = products.size();
+		
+		for(int i=0; i<lengthproducts; i++)
+		{
+			String product = ("ProductID: "+products.get(i).getProductID()+" "+products.get(i).getProductName()+"\t"+" Location in warehouse: "+products.get(i).getLocationInWarehouse()+"\t"+" Stock level: "+products.get(i).getStockLevel()+"\n");
+			productinfo.append(product);
+		}
+		
+		scrollpane = new JScrollPane(productinfo);
+		
 		date = new Date();
 		
 		OrderID = new JTextField();
 		OrderID.setText("Enter new order ID number here");
+		OrderID.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
 		quantity1 = new JTextField();
 		quantity1.setText("0");
+		quantity1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		quantity2 = new JTextField();
 		quantity2.setText("0");
+		quantity2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		quantity3 = new JTextField();
 		quantity3.setText("0");
+		quantity3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		quantity4 = new JTextField();
 		quantity4.setText("0");
+		quantity4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
 		String[] product = {"N/A","Harry Styles","Justin Bieber","Colm Pool","Colm Pissed"};
 		products1 = new JList(product);
@@ -121,6 +145,10 @@ public class GUIcreatenewstockordermenu extends JFrame
 		products3 = new JList(product);
 		products4 = new JList(product);
 		
+		products1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		products2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		products3.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		products4.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		
 		headerLabel.setText("Create New Order");
 		JButton mainButton = new JButton("Main Menu");
@@ -131,12 +159,18 @@ public class GUIcreatenewstockordermenu extends JFrame
 		stockorderButton.setActionCommand("Stock Orders");
 		createorderButton.setActionCommand("Create New Order");
 		
+		headerLabel.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		mainButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		stockorderButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		createorderButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		
 		mainButton.addActionListener(new BCL());
 		stockorderButton.addActionListener(new BCL());
 		createorderButton.addActionListener(new BCL());
 				
 		instructionPanel.add(instruction);
 		controlPanel1.add(OrderID);
+		controlPanel1.add(scrollpane);
 		controlPanel2.add(products1);
 		controlPanel2.add(quantity1);
 		controlPanel3.add(products2);

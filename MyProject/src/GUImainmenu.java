@@ -68,8 +68,8 @@ public class GUImainmenu extends JFrame
 		customerordersButton.setActionCommand("Customer Orders");
 		stockordersButton.setActionCommand("Stock Orders");
 		
-		customerordersButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		stockordersButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		customerordersButton.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+		stockordersButton.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		
 		customerordersButton.addActionListener(new BCL());
 		stockordersButton.addActionListener(new BCL());

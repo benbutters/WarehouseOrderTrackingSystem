@@ -31,11 +31,12 @@ public class GUIstockordermenu extends JFrame
 	 private JList orderlist;
 	 private JPanel BPanel;
 	 private JTextArea textarea;
+	 private JTextArea productinfo;
 	 private String[] details;
 	 private String nextline = "\n";
 	 private JScrollPane scrollpane;
 	 private JList statusoptions;
-	 private JLabel instruction;
+	 private JTextArea instruction;
 	 private JPanel instructionPanel;
 
 	public GUIstockordermenu()
@@ -68,14 +69,16 @@ public class GUIstockordermenu extends JFrame
 		headerLabel = new JLabel("", JLabel.CENTER);
 		orderlist = new JList(listData);
 
-		String instructions = "Please select an order to view the details. To update the status of a order please select the new status and select apply. To create a new order, click the create new order button.";
+		String instructions = "Please select an order to view the details."+"\n"+"To update the status of a order please select the new status and select apply."+"\n"+"To create a new order, click the create new order button.";
 		 
-		instruction = new JLabel("",JLabel.CENTER);
+		instruction = new JTextArea(20, 60);
 		instruction.setSize(350, 100);
 		instruction.setText(instructions);
+		instruction.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
 		String[] options = {"Placed","AwaitingDelivery","Processing","Shelved"};
 		statusoptions = new JList(options);
+		statusoptions.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		 
 		mainFrame.addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent windowEvent){System.exit(0);}});
 		instructionPanel = new JPanel();
@@ -99,8 +102,24 @@ public class GUIstockordermenu extends JFrame
 	{
 		
 		scrollpane = new JScrollPane(orderlist);
+		orderlist.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
 		textarea = new JTextArea(20, 60);
+		
+		productinfo = new JTextArea(20, 60);
+		productinfo.setEditable(false);
+		productinfo.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		
+		ArrayList<Product> products = new ArrayList<Product>();
+		products = DatabaseConnectionManager.accessDBProduct();
+		int lengthproducts = products.size();
+		
+		for(int i=0; i<lengthproducts; i++)
+		{
+			String product = ("ProductID: "+products.get(i).getProductID()+" "+products.get(i).getProductName()+"\t"+" Location in warehouse: "+products.get(i).getLocationInWarehouse()+"\t"+" Stock level: "+products.get(i).getStockLevel()+"\n");
+			productinfo.append(product);
+		}
+		
 			
 		ArrayList<StockOrderLine> stockorderlines = new ArrayList<StockOrderLine>();
 		stockorderlines = DatabaseConnectionManager.accessDBStockOrderLine();
@@ -121,12 +140,18 @@ public class GUIstockordermenu extends JFrame
 		apply.setActionCommand("Apply");
 		newstockorderbutton.setActionCommand("Create New Order");
 		
+		mainButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		customerorderButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		apply.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		newstockorderbutton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		
 		mainButton.addActionListener(new BCL());
 		customerorderButton.addActionListener(new BCL());
 		apply.addActionListener(new BCL());
 		newstockorderbutton.addActionListener(new BCL());
 		
 		instructionPanel.add(instruction);
+		instructionPanel.add(productinfo);
 		orderPanel.add(scrollpane);
 		orderPanel.add(textarea);
 		BPanel.add(statusoptions);

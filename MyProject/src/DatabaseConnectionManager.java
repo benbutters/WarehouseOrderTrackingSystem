@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DatabaseConnectionManager 
 {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://10.50.15.9:3306/john";
+	static final String DB_URL = "jdbc:mysql://10.50.15.18:3306/john";
 	static final String USER = "root";
 	static final String PASS = "netbuilder";
 
@@ -173,7 +173,7 @@ public class DatabaseConnectionManager
 		try
 		{
 			stmt = conn.createStatement();										//define what columns to import from the SQL database, in the same order as the order class
-			String sql2 = "SELECT ProductID, ProductName, Description, LocationInWarehouse FROM product";
+			String sql2 = "SELECT ProductID, ProductName, Description, LocationInWarehouse, StockLevel FROM product";
 			ResultSet rs = stmt.executeQuery(sql2);
 
 			while (rs.next()) 
@@ -183,9 +183,10 @@ public class DatabaseConnectionManager
 				String ProductName = rs.getString("ProductName");
 				String Description = rs.getString("Description");
 				String LocationInWarehouse = rs.getString("LocationInWarehouse");
+				int StockLevel = rs.getInt("StockLevel");
 
 				//start new object of order class to contain the read information
-				Product product = new Product(ProductID, ProductName, Description, LocationInWarehouse);
+				Product product = new Product(ProductID, ProductName, Description, LocationInWarehouse, StockLevel);
 
 				products.add(product);											//add each order object to the arraylist
 

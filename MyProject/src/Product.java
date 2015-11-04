@@ -6,6 +6,7 @@ public class Product
 	private String ProductName;
 	private String Description;
 	private String LocationInWarehouse;
+	private int StockLevel;
 	
 	//generate getters and setters
 	public int getProductID() 
@@ -24,15 +25,19 @@ public class Product
 	{ return LocationInWarehouse; }
 	public void setLocationInWarehouse(String locationInWarehouse) 
 	{ LocationInWarehouse = locationInWarehouse; }
-	
+	public int getStockLevel()
+	{ return StockLevel; }
+	public void setStockLevel(int stocklevel)
+	{ StockLevel = stocklevel; }
 	
 	//generate constructor
-	public Product(int productID, String productName, String description,String locationInWarehouse) 
+	public Product(int productID, String productName, String description, String locationInWarehouse, int stocklevel) 
 	{
 		super();
 		ProductID = productID;
 		ProductName = productName;
 		Description = description;
 		LocationInWarehouse = locationInWarehouse;
+		StockLevel = stocklevel;
 	}
 }
